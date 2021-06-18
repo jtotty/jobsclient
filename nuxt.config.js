@@ -15,6 +15,11 @@ export default {
     ]
   },
 
+  server: {
+    host: 'localhost',
+    port: 3000,
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
@@ -36,10 +41,40 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next'
   ],
 
+  auth: {
+    strategies: {
+      'laravelSanctum': {
+        provider: 'laravel/sanctum',
+        url: 'localhost:8000',
+        endpoints: {
+          login: {
+            url: '/api/login',
+            method: 'post',
+            propertyName: false
+          },
+          logout: {
+            url: '/api/logout',
+            method: 'post'
+          },
+          user: {
+            url: '/api/user',
+            method: 'get',
+            propertyName: false
+          }
+        }
+      }
+    },
+    localStorage: false
+  },
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: 'http://localhost:3000',
+    credentials: true
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
