@@ -3,11 +3,22 @@
         <nuxt-link :to="{ name: 'index' }" exact-active-class="text-blue-500">Jobs</nuxt-link>
 
         <div class="-mx-4 flex item-center flex-wrap">
-            <a class="mx-4 cursor-pointer" exact-active-class="text-blue-500">Post a Job</a>
+            <nuxt-link
+                :to="{ name: 'jobs-create' }"
+                class="mx-4 cursor-pointer"
+                exact-active-class="text-blue-500"
+            >
+                Post a Job
+            </nuxt-link>
 
             <template v-if="$auth.loggedIn">
                 <span class="mx-4 font-bold">{{ $auth.user.name }}</span>
-                <a class="mx-4 cursor-pointer">Manage Listings</a>
+                <nuxt-link
+                    :to="{ name: 'user-listings' }"
+                    class="mx-4 cursor-pointer"
+                >
+                    Manage Listings
+                </nuxt-link>
                 <a class="mx-4 cursor-pointer" @click.prevent="logout">Logout</a>
             </template>
 
