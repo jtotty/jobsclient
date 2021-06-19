@@ -6,11 +6,24 @@
         </div>
 
         <div class="mt-10">
-            Jobs index
+            <Job
+                v-for="job in jobs"
+                :key="job.id"
+                :job="job"
+            />
         </div>
     </div>
 </template>
 
 <script>
-export default {}
+import ALL_JOBS from '@/graphql/AllJobs.gql';
+
+export default {
+    apollo: {
+        jobs: {
+            query: ALL_JOBS,
+            fetchPolicy: 'network-only'
+        }
+    }
+}
 </script>

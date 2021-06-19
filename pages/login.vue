@@ -33,7 +33,7 @@
 
 <script>
 export default {
-    data() {
+    data () {
         return {
             form: {
                 email: '',
@@ -43,7 +43,7 @@ export default {
     },
 
     methods: {
-        login() {
+        login () {
             try {
                 this.$auth.loginWith('laravelSanctum', {
                     data: this.form
