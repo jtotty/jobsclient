@@ -1,82 +1,82 @@
 export default {
-  // Global page headers: https://go.nuxtjs.dev/config-head
-  head: {
-    title: 'jobsclient',
-    htmlAttrs: {
-      lang: 'en'
+    // Global page headers: https://go.nuxtjs.dev/config-head
+    head: {
+        title: 'jobsclient',
+        htmlAttrs: {
+            lang: 'en'
+        },
+        meta: [
+            { charset: 'utf-8' },
+            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+            { hid: 'description', name: 'description', content: '' }
+        ],
+        link: [
+            { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        ]
     },
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+
+    server: {
+        host: 'localhost',
+        port: 3000,
+    },
+
+    // Global CSS: https://go.nuxtjs.dev/config-css
+    css: [
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
-  },
 
-  server: {
-    host: 'localhost',
-    port: 3000,
-  },
+    // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
+    plugins: [
+    ],
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+    // Auto import components: https://go.nuxtjs.dev/config-components
+    components: true,
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-  ],
+    // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+    buildModules: [
+        // https://go.nuxtjs.dev/tailwindcss
+        '@nuxtjs/tailwindcss',
+    ],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+    // Modules: https://go.nuxtjs.dev/config-modules
+    modules: [
+        // https://go.nuxtjs.dev/axios
+        '@nuxtjs/axios',
+        '@nuxtjs/auth-next'
+    ],
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss',
-  ],
-
-  // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
-    '@nuxtjs/auth-next'
-  ],
-
-  auth: {
-    strategies: {
-      'laravelSanctum': {
-        provider: 'laravel/sanctum',
-        url: 'localhost:8000',
-        endpoints: {
-          login: {
-            url: '/api/login',
-            method: 'post',
-            propertyName: false
-          },
-          logout: {
-            url: '/api/logout',
-            method: 'post'
-          },
-          user: {
-            url: '/api/user',
-            method: 'get',
-            propertyName: false
-          }
-        }
-      }
+    auth: {
+        strategies: {
+            'laravelSanctum': {
+                provider: 'laravel/sanctum',
+                url: 'localhost:8000',
+                endpoints: {
+                    login: {
+                        url: '/api/login',
+                        method: 'post',
+                        propertyName: false
+                    },
+                    logout: {
+                        url: '/api/logout',
+                        method: 'post'
+                    },
+                    user: {
+                        url: '/api/user',
+                        method: 'get',
+                        propertyName: false
+                    }
+                }
+            }
+        },
+        localStorage: false
     },
-    localStorage: false
-  },
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    baseURL: 'http://localhost:3000',
-    credentials: true
-  },
+    // Axios module configuration: https://go.nuxtjs.dev/config-axios
+    axios: {
+        baseURL: 'http://localhost:3000',
+        credentials: true
+    },
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  }
+    // Build Configuration: https://go.nuxtjs.dev/config-build
+    build: {
+    }
 }
