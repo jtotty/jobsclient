@@ -39,12 +39,18 @@ export default {
                 email: '',
                 password: ''
             }
-        };
+        }
     },
 
     methods: {
         login() {
-            
+            try {
+                this.$auth.loginWith('laravelSanctum', {
+                    data: this.form
+                })
+            } catch (e) {
+                console.log(e)
+            }
         }
     }
 }

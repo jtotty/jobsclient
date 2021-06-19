@@ -2,16 +2,36 @@
     <header class="py-6 flex items-center justify-between">
         <nuxt-link :to="{ name: 'index' }" exact-active-class="text-blue-500">Jobs</nuxt-link>
 
-        <div class="flex item-center flex-wrap">
-            <span class="mx-4 font-bold">James</span>
-            <nuxt-link:to="{ name: 'login' }" exact-active-class="text-blue-500" class="mx-4">Login</nuxt-link>
-            <a class="mx-4">Manage Listings</a>
-            <a class="mx-4">Logut</a>
-            <a class="ml-4">Post a Job</a>
+        <div class="-mx-4 flex item-center flex-wrap">
+            <a class="mx-4" exact-active-class="text-blue-500">Post a Job</a>
+
+            <template v-if="$auth.loggedIn">
+                <span class="mx-4 font-bold">{{ $auth.user.name }}</span>
+                <a class="mx-4">Manage Listings</a>
+                <a class="mx-4" @click.prevent="logout">Logut</a>
+            </template>
+
+            <template v-if="!$auth.loggedIn">
+                <nuxt-link
+                    :to="{ name: 'login' }"
+                    exact-active-class="text-blue-500"
+                    class="mx-4"
+                >
+                    Login
+                </nuxt-link>
+            </template>
         </div>
     </header>
 </template>
 
 <script>
-export default {}
+export default {
+    methods: {
+        async logout() {
+            await this.$auth.logout()
+
+            this.$router.replace({ name: 'index'})
+        }
+    }
+}
 </script>
